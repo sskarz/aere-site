@@ -2,25 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Terms of Use · Aere</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aere terms of use</title>
   <meta name="description" content="Terms of use for the Aere iPhone app and keyboard.">
-  <meta name="theme-color" content="#FBFBF9" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F7F5EF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function (d) {
+      var h = d.documentElement; h.classList.add('js');
+      try { if (sessionStorage.getItem('aere-wipe')) h.classList.add('wipe-in'); } catch (e) {}
+      setTimeout(function () { if (!window.__aere) h.classList.remove('js', 'wipe-in'); }, 2500);
+    })(document);
+  </script>
+  <script src="site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="chk" width="3" height="3" patternUnits="userSpaceOnUse">
+      <rect class="chk" width="1.5" height="1.5"/><rect class="chk" x="1.5" y="1.5" width="1.5" height="1.5"/>
+    </pattern>
+  </defs>
+</svg>
+
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Aere</a>
-    <nav class="primary" aria-label="Primary">
+    <a class="brand" href="index.html" aria-label="Aere home"><img src="assets/mark.svg" alt="" width="30" height="30"><span>Aere</span></a>
+    <nav aria-label="Primary">
       <ul>
-        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#how">How it works</a></li>
         <li><a href="privacy.html">Privacy</a></li>
         <li><a href="support.html">Support</a></li>
       </ul>
@@ -30,9 +46,7 @@
 
 <main id="main" class="doc">
   <div class="wrap">
-    <div class="card">
-      <span class="label">Terms of use</span>
-      <div class="body">
+    <div class="paper sheet scene">
         <article>
           <h1>Terms of Use</h1>
           <p class="meta">Effective date: November 22, 2026</p>
@@ -107,14 +121,13 @@
           <p>Sanskar Thapa<br>
                     Email: <a href="mailto:sanskar1016pro@outlook.com">sanskar1016pro@outlook.com</a></p>
         </article>
-      </div>
     </div>
   </div>
 </main>
 
 <footer class="site">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="26" height="26">Aere</a>
+    <a class="brand" href="index.html" aria-label="Aere home"><img src="assets/mark.svg" alt="" width="26" height="26"><span>Aere</span></a>
     <nav aria-label="Footer">
       <ul>
         <li><a href="privacy.html">Privacy</a></li>
@@ -122,7 +135,7 @@
         <li><a href="support.html">Support</a></li>
       </ul>
     </nav>
-    <small>&copy; 2026 Sanskar Thapa</small>
+    <small>&copy; 2026 Sanskar Thapa. iPhone and App Store are trademarks of Apple Inc.</small>
   </div>
 </footer>
 </body>

@@ -2,26 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aere: a keyboard built for iPhone Duo</title>
-  <meta name="description" content="Aere is an iPhone keyboard for foldable and regular iPhones, with on-device dictation, Apple Intelligence cleanup, autocorrect, swipe typing and emoji. Nothing leaves your iPhone.">
-  <meta name="theme-color" content="#FBFBF9" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aere: say it messy, send it clean</title>
+  <meta name="description" content="Aere is a private iPhone keyboard. Dictate the way you talk and it writes clean, concise text, on your iPhone. No servers, no accounts, no analytics.">
+  <meta name="theme-color" content="#F7F5EF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    /* Hide-then-draw only when the script can run; undo it if site.js never arrives. */
+    (function (d) {
+      var h = d.documentElement; h.classList.add('js');
+      try {
+        if (sessionStorage.getItem('aere-wipe')) h.classList.add('wipe-in');
+        else if (!sessionStorage.getItem('aere-intro') && !location.hash &&
+                 !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('intro-pending');
+      } catch (e) {}
+      setTimeout(function () { if (!window.__aere) h.classList.remove('js', 'wipe-in', 'intro-pending'); }, 2500);
+    })(document);
+  </script>
+  <script src="site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
+<!-- Shared fills for the drawings (checkerboard shadow). -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="chk" width="3" height="3" patternUnits="userSpaceOnUse">
+      <rect class="chk" width="1.5" height="1.5"/><rect class="chk" x="1.5" y="1.5" width="1.5" height="1.5"/>
+    </pattern>
+    <pattern id="chk-big" width="5" height="5" patternUnits="userSpaceOnUse">
+      <rect class="chk" width="2.5" height="2.5"/><rect class="chk" x="2.5" y="2.5" width="2.5" height="2.5"/>
+    </pattern>
+  </defs>
+</svg>
+
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Aere</a>
-    <nav class="primary" aria-label="Primary">
+    <a class="brand" href="index.html" aria-label="Aere home"><img src="assets/mark.svg" alt="" width="30" height="30"><span>Aere</span></a>
+    <nav aria-label="Primary">
       <ul>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#private">Privacy</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
         <li><a href="support.html">Support</a></li>
       </ul>
     </nav>
@@ -30,190 +55,102 @@
 
 <main id="main">
 
-  <section class="hero" aria-labelledby="hero-title">
+  <section class="hero scene" id="top" aria-labelledby="hero-title">
     <div class="wrap">
-      <img class="hero-mark" src="assets/mark.svg" alt="Aere logo: a scribbled loop pulled into one straight line that ends at a red text cursor" width="260" height="260">
-      <div>
-        <span class="eyebrow">iPhone keyboard &middot; on device</span>
-        <h1 id="hero-title">Aere<span class="cursor" aria-hidden="true"></span></h1>
-        <p class="pitch">A keyboard built for iPhone Duo, folded and unfolded. Type, swipe and dictate on any iPhone, and nothing you say or type ever leaves it.</p>
-        <div class="actions">
-          <a class="button" href="#get">Get Aere</a>
-          <a class="button ghost" href="#private">Private by design</a>
+      <h1 class="headline" id="hero-title"><span class="l">Say it messy.</span> <span class="l">Send it clean.</span></h1>
+      <p class="hand margin-note" aria-hidden="true">that&rsquo;s the whole idea
+        <svg viewBox="0 0 90 60" data-art="note-arrow"></svg></p>
+      <p class="sub wr" style="--d:.15s">An iPhone keyboard that turns the way you talk into tidy text. On your phone, never a server.</p>
+      <div class="cta fade" style="--d:.35s">
+        <a class="btn" href="#how">See how it works</a>
+        <p class="soon-tag"><span class="hand">TestFlight soon</span></p>
+      </div>
+    </div>
+    <svg class="divider" viewBox="0 0 640 60" preserveAspectRatio="xMidYMid meet" data-art="divider" aria-hidden="true" style="--d:.4s"></svg>
+  </section>
+
+  <section class="demo" id="how" aria-labelledby="how-title">
+    <div class="wrap split">
+      <div class="copy scene">
+        <h2 class="h wr" id="how-title">Watch it untangle.</h2>
+        <p class="lede fade" style="--d:.2s">Fillers out. Thoughts in order. Written in the style you pick.</p>
+        <p class="small fade" style="--d:.35s">Apple Intelligence does the cleanup on your iPhone. <em>Undo Cleanup</em> gives back exactly what you said.</p>
+      </div>
+
+      <figure class="stage scene" data-demo>
+        <div class="said" aria-hidden="true">
+          <svg class="mic" viewBox="0 0 44 64" data-art="mic"></svg>
+          <p class="hand words">
+            <span class="w f">um</span> <span class="w f">so</span> <span class="w f">like</span> <span class="w">I</span> <span class="w">was</span> <span class="w">thinking</span> <span class="w">we</span> <span class="w">could,</span> <span class="w f">uh,</span> <span class="w">meet</span> <span class="w">at</span> <span class="w">six?</span> <span class="w">maybe</span> <span class="w">grab</span> <span class="w">dinner</span> <span class="w">after?</span>
+          </p>
         </div>
+        <svg class="arrow" viewBox="0 0 60 56" data-art="arrow" aria-hidden="true"></svg>
+        <div class="field sheet" aria-hidden="true"><span class="out"></span><span class="caret"></span></div>
+        <div class="chips" role="radiogroup" aria-label="Cleanup style">
+          <button type="button" class="chip" role="radio" aria-checked="true" data-style="casual">Casual</button>
+          <button type="button" class="chip" role="radio" aria-checked="false" tabindex="-1" data-style="polished">Polished</button>
+          <button type="button" class="chip" role="radio" aria-checked="false" tabindex="-1" data-style="concise">Concise</button>
+          <button type="button" class="chip" role="radio" aria-checked="false" tabindex="-1" data-style="bullets">Bullet List</button>
+        </div>
+        <figcaption class="sr-only">You say: &ldquo;um so like I was thinking we could, uh, meet at six? maybe grab dinner after?&rdquo; Aere writes, in the Casual style: &ldquo;Meet at six? Maybe grab dinner after?&rdquo;</figcaption>
+        <p class="sr-only" aria-live="polite" data-live></p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="private" id="private" aria-labelledby="private-title">
+    <div class="wrap split flip">
+      <div class="copy scene">
+        <h2 class="h wr" id="private-title">Nothing leaves your iPhone.</h2>
+        <ul class="nos" aria-label="What Aere doesn't have">
+          <li style="--k:0"><span class="sr-only">No </span><span class="struck">servers<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path class="ink red draw" pathLength="1" d="M2 12 C30 8 62 14 98 9"/></svg></span></li>
+          <li style="--k:1"><span class="sr-only">No </span><span class="struck">accounts<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path class="ink red draw" pathLength="1" d="M2 9 C34 13 66 8 98 12"/></svg></span></li>
+          <li style="--k:2"><span class="sr-only">No </span><span class="struck">analytics<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path class="ink red draw" pathLength="1" d="M2 11 C28 14 70 7 98 10"/></svg></span></li>
+          <li style="--k:3"><span class="sr-only">No </span><span class="struck">trackers<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path class="ink red draw" pathLength="1" d="M2 10 C36 7 64 13 98 11"/></svg></span></li>
+        </ul>
+        <p class="lede fade" style="--d:1.2s">Dictation and cleanup run on Apple&rsquo;s on-device models. Audio is never saved or sent.</p>
+        <p class="fade" style="--d:1.35s"><a href="privacy.html">Read the privacy policy</a></p>
+      </div>
+      <div class="art-wrap scene">
+        <svg class="art" viewBox="0 0 360 250" data-art="privacy" aria-hidden="true"></svg>
       </div>
     </div>
   </section>
 
-  <hr class="rule">
-
-  <section id="features" aria-labelledby="features-title">
-    <div class="wrap">
-      <div class="intro">
-        <span class="kicker">What's inside</span>
-        <h2 id="features-title">Feels like the iPhone keyboard. Does a little more.</h2>
-        <p>Aere matches the keys, sizes and gestures you already know, then adds dictation in the suggestion bar and a layout that changes shape with your phone.</p>
+  <section class="duo" id="duo" aria-labelledby="duo-title">
+    <div class="wrap split">
+      <div class="copy scene">
+        <h2 class="h wr" id="duo-title">Folded or unfolded.</h2>
+        <p class="lede fade" style="--d:.2s">Made for iPhone Duo: a full keyboard when it&rsquo;s closed, split for your thumbs when it&rsquo;s open. On any other iPhone, it feels like the keyboard you know.</p>
+        <p class="fade" style="--d:.3s"><button type="button" class="btn ghost" data-fold>Fold it</button></p>
       </div>
-
-      <div class="grid two wide">
-        <article class="card feature">
-          <span class="label">Folded &amp; unfolded</span>
-          <div class="art" aria-hidden="true">
-            <svg viewBox="0 0 320 170" role="presentation">
-              <defs>
-                <pattern id="keys" width="8" height="12" patternUnits="userSpaceOnUse">
-                  <rect x="0.75" y="0.75" width="6" height="9" style="fill:var(--paper);stroke:var(--ink)" stroke-width="1"/>
-                </pattern>
-                <pattern id="chk" width="4" height="4" patternUnits="userSpaceOnUse">
-                  <rect width="2" height="2" class="ink-fill"/><rect x="2" y="2" width="2" height="2" class="ink-fill"/>
-                </pattern>
-              </defs>
-              <!-- folded -->
-              <rect x="12" y="10" width="84" height="150" rx="9" fill="url(#chk)"/>
-              <rect x="8" y="6" width="84" height="150" rx="9" class="paper-fill"/>
-              <rect x="8" y="6" width="84" height="150" rx="9" class="ink-stroke" stroke-width="2"/>
-              <rect x="14" y="18" width="62" height="5" class="ink-fill"/>
-              <rect x="14" y="28" width="46" height="5" class="ink-fill"/>
-              <rect x="62" y="27" width="2" height="8" class="accent-fill"/>
-              <line x1="8" y1="84" x2="92" y2="84" class="ink-stroke" stroke-width="1.5"/>
-              <rect x="80" y="88" width="4" height="6" class="accent-fill"/>
-              <rect x="12" y="100" width="80" height="36" fill="url(#keys)"/>
-              <rect x="16" y="138" width="16" height="9" class="ink-stroke"/>
-              <rect x="35" y="138" width="34" height="9" class="ink-stroke"/>
-              <rect x="72" y="138" width="14" height="9" class="ink-stroke"/>
-              <!-- unfolded -->
-              <rect x="120" y="10" width="196" height="150" rx="9" fill="url(#chk)"/>
-              <rect x="116" y="6" width="196" height="150" rx="9" class="paper-fill"/>
-              <rect x="116" y="6" width="196" height="150" rx="9" class="ink-stroke" stroke-width="2"/>
-              <line x1="214" y1="6" x2="214" y2="156" class="ink-stroke" stroke-width="1.5" stroke-dasharray="4 4"/>
-              <rect x="124" y="18" width="120" height="5" class="ink-fill"/>
-              <rect x="124" y="28" width="84" height="5" class="ink-fill"/>
-              <rect x="210" y="27" width="2" height="8" class="accent-fill"/>
-              <line x1="116" y1="84" x2="312" y2="84" class="ink-stroke" stroke-width="1.5"/>
-              <rect x="296" y="88" width="4" height="6" class="accent-fill"/>
-              <rect x="122" y="100" width="48" height="36" fill="url(#keys)"/>
-              <rect x="258" y="100" width="48" height="36" fill="url(#keys)"/>
-              <rect x="124" y="138" width="40" height="9" class="ink-stroke"/>
-              <rect x="262" y="138" width="40" height="9" class="ink-stroke"/>
-            </svg>
-          </div>
-          <div class="body">
-            <h3>One keyboard, two shapes</h3>
-            <p>Folded, Aere fills the narrow screen like the iPhone keyboard does. Unfolded, it can split for thumb typing, with a 1&ndash;0 number row a tap away in the <kbd>&bull;&bull;&bull;</kbd> menu. On a regular iPhone it's simply a familiar keyboard.</p>
-          </div>
-        </article>
-
-        <article class="card feature">
-          <span class="label">On-device dictation</span>
-          <div class="art" aria-hidden="true">
-            <svg viewBox="0 0 300 150" role="presentation">
-              <rect x="22" y="40" width="256" height="70" rx="4" fill="url(#chk)" transform="translate(5 5)"/>
-              <rect x="22" y="40" width="256" height="70" rx="4" class="paper-fill"/>
-              <rect x="22" y="40" width="256" height="70" rx="4" class="ink-stroke" stroke-width="2"/>
-              <g class="ink-fill">
-                <rect x="52" y="66" width="8" height="18"/><rect x="66" y="58" width="8" height="34"/>
-                <rect x="80" y="50" width="8" height="50"/><rect x="94" y="60" width="8" height="30"/>
-                <rect x="108" y="54" width="8" height="42"/><rect x="122" y="64" width="8" height="22"/>
-                <rect x="136" y="58" width="8" height="34"/><rect x="164" y="62" width="8" height="26"/>
-                <rect x="178" y="68" width="8" height="14"/>
-              </g>
-              <rect x="150" y="48" width="8" height="54" class="accent-fill"/>
-              <rect x="212" y="58" width="30" height="34" class="ink-stroke" stroke-width="2"/>
-              <path d="M219 75l6 6 11-13" class="ink-stroke" stroke-width="3"/>
-            </svg>
-          </div>
-          <div class="body">
-            <h3>Dictate without switching apps</h3>
-            <p>Tap the mic in the suggestion bar, talk, and tap <kbd>&check;</kbd>. Or hold the mic and let go to insert. Say "comma" or "new line" for punctuation. Recognition runs on your iPhone with Apple's on-device speech model, and if dictation is cut off you get a <em>Paste Dictation</em> chip to recover it.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="grid three" style="margin-top:26px">
-        <article class="card feature">
-          <span class="label">AI cleanup</span>
-          <div class="body">
-            <h3>Tidy text, your words</h3>
-            <p>On iPhones with Apple Intelligence, Aere can clean up a dictation before inserting it: drop the "um"s, fix punctuation and capitals, in the style you pick. It runs on device, and <em>Undo Cleanup</em> gives back exactly what you said.</p>
-          </div>
-        </article>
-        <article class="card feature">
-          <span class="label">Autocorrect + swipe</span>
-          <div class="body">
-            <h3>Fast, forgiving typing</h3>
-            <p>Autocorrect and predictions that learn the words you keep, slide-to-type, a space-bar trackpad, long-press accents, and quick numbers from the <kbd>123</kbd> key.</p>
-          </div>
-        </article>
-        <article class="card feature">
-          <span class="label">Emoji</span>
-          <div class="body">
-            <h3>Every emoji, searchable</h3>
-            <p>A full emoji keyboard with search, recents and skin tones, one tap from the space bar.</p>
-          </div>
-        </article>
-        <article class="card feature">
-          <span class="label">Smart chips</span>
-          <div class="body">
-            <h3>The right shortcut, in context</h3>
-            <p>The suggestion bar offers what fits the moment: paste a copied number or link, fill in your own email, phone or address from <em>My Info</em>, recover an interrupted dictation, or undo a cleanup.</p>
-          </div>
-        </article>
-        <article class="card feature">
-          <span class="label">Privacy mode</span>
-          <div class="body">
-            <h3>Quiet in password fields</h3>
-            <p>In password, one-time-code and card fields Aere stops learning, predicting and logging. A <kbd>Passwords</kbd> chip hands you to Apple's keyboard so iOS AutoFill can fill them in.</p>
-          </div>
-        </article>
-        <article class="card feature">
-          <span class="label">Feels native</span>
-          <div class="body">
-            <h3>Made to match</h3>
-            <p>Key sizes, sounds, haptics and the globe and dictation keys follow the iPhone keyboard, measured key by key, so your thumbs don't have to relearn anything.</p>
-          </div>
-        </article>
+      <div class="art-wrap scene" data-duo>
+        <svg class="art" viewBox="0 0 360 260" data-art="duo" aria-hidden="true"></svg>
+        <p class="hand duo-label" aria-hidden="true"><span class="open">open: split for thumbs</span><span class="closed">closed: the whole keyboard</span></p>
       </div>
     </div>
   </section>
 
-  <section id="private" class="private" aria-labelledby="private-title">
+  <section class="extras" aria-labelledby="extras-title">
     <div class="wrap">
-      <div class="intro">
-        <span class="kicker">Private by design</span>
-        <h2 id="private-title">Your keyboard sees everything. Ours keeps it.</h2>
-        <p>Aere has no servers, no accounts and no analytics. Everything it does, it does on your iPhone.</p>
-      </div>
-      <div class="grid two">
-        <div class="card">
-          <span class="label">Never</span>
-          <div class="row"><span class="tile" aria-hidden="true">&#x2300;</span><div><h3>No network</h3><p>The keyboard has no network code. What you type stays on this iPhone.</p></div></div>
-          <div class="row"><span class="tile" aria-hidden="true">&#x2205;</span><div><h3>No tracking</h3><p>No analytics, no ads, no third-party SDKs. Nothing is collected, so nothing is sold.</p></div></div>
-          <div class="row"><span class="tile" aria-hidden="true">&#x2715;</span><div><h3>No accounts</h3><p>There's nothing to sign up for.</p></div></div>
-        </div>
-        <div class="card">
-          <span class="label">On device</span>
-          <div class="row"><span class="tile" aria-hidden="true">&#x25CF;</span><div><h3>Dictation</h3><p>Apple's on-device speech recognition. Audio is never saved or sent anywhere.</p></div></div>
-          <div class="row"><span class="tile" aria-hidden="true">&#x2726;</span><div><h3>Cleanup</h3><p>Apple Intelligence's on-device model, on iPhones that have it.</p></div></div>
-          <div class="row"><span class="tile" aria-hidden="true">&#x25A3;</span><div><h3>Your data</h3><p>Learned words, settings and My Info live in the app's own storage on your iPhone. Delete the app and they're gone.</p></div></div>
-        </div>
-      </div>
-      <p style="margin-top:28px"><a href="privacy.html">Read the full privacy policy &rarr;</a></p>
+      <h2 class="h wr scene" id="extras-title">And the everyday stuff.</h2>
+      <ul class="vigs">
+        <li class="scene"><svg viewBox="0 0 220 130" data-art="translate" aria-hidden="true"></svg><h3>Speak one language, type another.</h3></li>
+        <li class="scene"><svg viewBox="0 0 220 130" data-art="swipe" aria-hidden="true"></svg><h3>Swipe to type.</h3></li>
+        <li class="scene"><svg viewBox="0 0 220 130" data-art="learn" aria-hidden="true"></svg><h3>Autocorrect that learns your words.</h3></li>
+        <li class="scene"><svg viewBox="0 0 220 130" data-art="secure" aria-hidden="true"></svg><h3>Quiet in password fields.</h3></li>
+      </ul>
     </div>
   </section>
 
-  <section id="get" aria-labelledby="get-title">
+  <section class="get scene" id="get" aria-labelledby="get-title">
     <div class="wrap">
-      <div class="intro">
-        <span class="kicker">Get Aere</span>
-        <h2 id="get-title">Free on the App Store. Soon.</h2>
+      <div class="stamp">
+        <svg class="stamp-edge" data-art="stamp" aria-hidden="true"></svg>
+        <h2 id="get-title">TestFlight soon.</h2>
+        <p>Then the App Store, free. There&rsquo;s no link yet.</p>
       </div>
-      <div class="store">
-        <div class="badge" aria-label="App Store link coming soon">
-          <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" rx="5" class="ink-stroke" stroke-width="2"/><path d="M7 15l4-8 4 8M8.5 12h5" class="ink-stroke" stroke-width="2"/></svg>
-          <div><span>DOWNLOAD ON THE</span>App Store link coming soon</div>
-        </div>
-        <p>Aere needs iOS 18 or later. Dictation uses Apple's newest speech model on iOS 26; cleanup needs an iPhone with Apple Intelligence.</p>
-      </div>
+      <p class="small fade" style="--d:.6s">Needs iOS 18 or later. Cleanup needs an iPhone with Apple Intelligence.</p>
     </div>
   </section>
 
@@ -221,7 +158,7 @@
 
 <footer class="site">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="26" height="26">Aere</a>
+    <a class="brand" href="index.html" aria-label="Aere home"><img src="assets/mark.svg" alt="" width="26" height="26"><span>Aere</span></a>
     <nav aria-label="Footer">
       <ul>
         <li><a href="privacy.html">Privacy</a></li>

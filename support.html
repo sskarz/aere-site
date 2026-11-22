@@ -2,25 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Support · Aere</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aere support</title>
   <meta name="description" content="Help with Aere: turning on the keyboard, Full Access, dictation, AutoFill and resetting.">
-  <meta name="theme-color" content="#FBFBF9" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F7F5EF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function (d) {
+      var h = d.documentElement; h.classList.add('js');
+      try { if (sessionStorage.getItem('aere-wipe')) h.classList.add('wipe-in'); } catch (e) {}
+      setTimeout(function () { if (!window.__aere) h.classList.remove('js', 'wipe-in'); }, 2500);
+    })(document);
+  </script>
+  <script src="site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="chk" width="3" height="3" patternUnits="userSpaceOnUse">
+      <rect class="chk" width="1.5" height="1.5"/><rect class="chk" x="1.5" y="1.5" width="1.5" height="1.5"/>
+    </pattern>
+  </defs>
+</svg>
+
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Aere</a>
-    <nav class="primary" aria-label="Primary">
+    <a class="brand" href="index.html" aria-label="Aere home"><img src="assets/mark.svg" alt="" width="30" height="30"><span>Aere</span></a>
+    <nav aria-label="Primary">
       <ul>
-        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#how">How it works</a></li>
         <li><a href="privacy.html">Privacy</a></li>
         <li><a href="support.html" aria-current="page">Support</a></li>
       </ul>
@@ -28,15 +44,15 @@
   </div>
 </header>
 
-<main id="main" class="doc">
+<main id="main" class="doc support">
   <div class="wrap">
-    <article>
-      <h1>Support</h1>
-      <p>Answers to common questions. Can't find yours? <a href="#contact">Get in touch</a>.</p>
-    </article>
+    <div class="scene">
+      <h1 class="h wr">Support</h1>
+      <p class="lede fade" style="--d:.2s">Answers to common questions. Can&rsquo;t find yours? <a href="#contact">Get in touch</a>.</p>
+    </div>
 
-    <h2 id="faq" style="border:0;margin-top:1.2em;padding-top:0">Frequently asked</h2>
-
+    <h2 class="sr-only" id="faq">Frequently asked</h2>
+    <div class="faq">
     <details id="enable" open>
       <summary>How do I turn on the keyboard?</summary>
       <div>
@@ -49,7 +65,6 @@
         <p>The app's <em>Setup Guide</em> walks through these steps and ticks them off as the keyboard shows up.</p>
       </div>
     </details>
-
     <details id="full-access">
       <summary>What is Full Access, and why does Aere need it?</summary>
       <div>
@@ -62,7 +77,6 @@
         <p>Without it you can still type, swipe, autocorrect and use emoji. Details are in the <a href="privacy.html#full-access">privacy policy</a>.</p>
       </div>
     </details>
-
     <details id="dictation">
       <summary>Dictation isn't working</summary>
       <div>
@@ -77,7 +91,6 @@
         <p>Still stuck? Restart the app you're typing in, switch to another keyboard and back, or restart your iPhone.</p>
       </div>
     </details>
-
     <details id="autofill">
       <summary>Why does it switch to Apple's keyboard for passwords and codes?</summary>
       <div>
@@ -86,14 +99,12 @@
         <p>In password, code and card fields Aere also turns on privacy mode: no learning, predictions, swipe or dictation there.</p>
       </div>
     </details>
-
     <details id="cleanup">
       <summary>Dictation cleanup doesn't do anything</summary>
       <div>
         <p>Cleanup uses Apple Intelligence, which needs iOS 26 or later on a supported iPhone with Apple Intelligence turned on (and its model downloaded). Aere &rsaquo; <em>Dictation Cleanup</em> shows the current status. When it isn't available, your words are inserted as you said them.</p>
       </div>
     </details>
-
     <details id="reset">
       <summary>How do I reset Aere?</summary>
       <div>
@@ -104,34 +115,31 @@
         </ul>
       </div>
     </details>
-
     <details id="duo">
       <summary>Do I need a foldable iPhone?</summary>
       <div>
         <p>No. Aere works on any iPhone with iOS 18 or later. On iPhone Duo it adapts when you fold and unfold, and can split the keyboard for your thumbs.</p>
       </div>
     </details>
-
     <details id="data">
       <summary>Does Aere collect anything?</summary>
       <div>
         <p>No. No accounts, no analytics, no servers. Everything stays on your iPhone. Read the <a href="privacy.html">privacy policy</a>.</p>
       </div>
     </details>
-
-    <div class="card" id="contact" style="margin-top:36px">
-      <span class="label band">Contact</span>
-      <div class="body">
-        <p>Email <a href="mailto:sanskar1016pro@outlook.com">sanskar1016pro@outlook.com</a>. Include your iPhone model, iOS version and Aere version (Aere &rsaquo; <em>About</em>). We'll reply as soon as we can.</p>
-        <p class="meta">If we ask for a diagnostic log, you can copy it from the app's Developer menu and paste it into your email. It contains technical events only. Nothing is sent unless you send it.</p>
-      </div>
     </div>
+
+    <section class="contact sheet scene" id="contact" aria-labelledby="contact-title">
+      <h2 class="h wr" id="contact-title">Contact</h2>
+      <p>Email <a href="mailto:sanskar1016pro@outlook.com">sanskar1016pro@outlook.com</a>. Include your iPhone model, iOS version and Aere version (Aere &rsaquo; <em>About</em>). We'll reply as soon as we can.</p>
+      <p class="meta">If we ask for a diagnostic log, you can copy it from the app's Developer menu and paste it into your email. It contains technical events only. Nothing is sent unless you send it.</p>
+    </section>
   </div>
 </main>
 
 <footer class="site">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="26" height="26">Aere</a>
+    <a class="brand" href="index.html" aria-label="Aere home"><img src="assets/mark.svg" alt="" width="26" height="26"><span>Aere</span></a>
     <nav aria-label="Footer">
       <ul>
         <li><a href="privacy.html">Privacy</a></li>
@@ -139,7 +147,7 @@
         <li><a href="support.html" aria-current="page">Support</a></li>
       </ul>
     </nav>
-    <small>&copy; 2026 Sanskar Thapa</small>
+    <small>&copy; 2026 Sanskar Thapa. iPhone and App Store are trademarks of Apple Inc.</small>
   </div>
 </footer>
 </body>
