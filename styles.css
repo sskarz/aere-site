@@ -1,0 +1,309 @@
+/* Aere website: the app's "Dither" style in plain CSS.
+   Tokens mirror KeyboardDictation/DesignSystem.swift (Theme). No web fonts, no build step. */
+
+:root {
+  --paper: #FBFBF9;
+  --ink: #111111;
+  --ink-2: #555555;          /* secondary text, >= 4.5:1 on paper */
+  --accent: #C92A2A;         /* links, highlights, >= 4.5:1 on paper */
+  --warn: #A35400;
+  --band: #F6E7D3;           /* the app's STATUS header band */
+  --dot: rgb(17 17 17 / 0.10);
+  --line: 2px;               /* the app's 1.5pt line at web scale */
+  --thick: 3px;
+  --shadow: 6px;
+  --radius: 2px;
+  --measure: 68ch;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
+
+  /* Dither vocabulary (DitherKind): 2x2 checkerboard (dense), sparse 4x4 (light), diagonal hatch. */
+  --checker: repeating-conic-gradient(var(--ink) 0 25%, transparent 0 50%) 0 0 / 4px 4px;
+  --light: radial-gradient(circle at 1px 1px, var(--ink) 0.9px, transparent 1px) 0 0 / 4px 4px;
+  --hatch: repeating-linear-gradient(-45deg, rgb(17 17 17 / 0.35) 0 1px, transparent 1px 6px);
+  --grid: conic-gradient(at 1px 1px, transparent 75%, var(--dot) 0) 0 0 / 8px 8px;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #111111;
+    --ink: #F2F2EE;
+    --ink-2: #A9A9A3;
+    --accent: #FF6B6B;
+    --warn: #FFA94D;
+    --band: #3A2A14;
+    --dot: rgb(242 242 238 / 0.10);
+    --hatch: repeating-linear-gradient(-45deg, rgb(242 242 238 / 0.30) 0 1px, transparent 1px 6px);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--grid), var(--paper);
+  background-color: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  body { background: var(--paper); }
+}
+
+/* Every top-level block is its own stacking context so the hard shadows (z-index: -1)
+   sit above the page but under the card they belong to. */
+header.site, main, section, footer.site { isolation: isolate; }
+
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: var(--thick) solid var(--accent);
+  outline-offset: 3px;
+}
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 0.5em; letter-spacing: -0.01em; }
+h1 { font-size: clamp(30px, 7vw, 52px); font-weight: 800; }
+h2 { font-size: clamp(22px, 4.5vw, 30px); font-weight: 800; }
+h3 { font-size: 17px; font-weight: 700; }
+p { margin: 0 0 1em; }
+code, kbd { font-family: inherit; font-size: 0.95em; }
+kbd {
+  display: inline-block;
+  padding: 0 0.4em;
+  border: var(--line) solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 2px 2px 0 var(--ink);
+  line-height: 1.35;
+}
+
+.skip {
+  position: absolute; left: -999px; top: 8px;
+  background: var(--ink); color: var(--paper); padding: 8px 12px; z-index: 10;
+}
+.skip:focus { left: 8px; }
+
+.wrap { width: min(100% - 32px, 1080px); margin-inline: auto; }
+
+/* ---------- Header ---------- */
+
+header.site {
+  background: var(--paper);
+  border-bottom: var(--line) solid var(--ink);
+  position: sticky; top: 0; z-index: 5;
+}
+header.site .wrap {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 60px; flex-wrap: wrap; padding-block: 8px;
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--ink); text-decoration: none; font-weight: 800; font-size: 19px;
+}
+.brand img { width: 34px; height: 34px; display: block; }
+nav.primary ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 0; padding: 0; }
+nav.primary a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.primary a:hover, nav.primary a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; }
+
+/* ---------- Cards (StyledSection) ---------- */
+
+.card {
+  position: relative;
+  background: var(--paper);
+  border: var(--line) solid var(--ink);
+  border-radius: var(--radius);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--line));
+  transform: translate(var(--shadow), var(--shadow));
+  background: var(--checker);
+  z-index: -1;
+  pointer-events: none;
+}
+.card > .label {
+  display: block;
+  margin: 0;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: var(--line) solid var(--ink);
+  background: var(--paper);
+}
+.card > .label.band { background: var(--band); }
+.card > .body { padding: 14px 16px; }
+.card > .body > :last-child { margin-bottom: 0; }
+
+.row { padding: 12px 16px; border-top: 1px solid var(--ink); display: flex; gap: 12px; align-items: flex-start; }
+.card > .label + .row { border-top: 0; }
+.row h3 { margin: 0 0 2px; font-size: 15px; }
+.row p { margin: 0; color: var(--ink-2); font-size: 13.5px; }
+
+/* Icon tile like IconTile: square, outlined, glyph inside. */
+.tile {
+  flex: none; width: 30px; height: 30px;
+  display: grid; place-items: center;
+  border: var(--line) solid var(--ink); border-radius: var(--radius);
+  font-size: 15px; line-height: 1; background: var(--paper);
+}
+.tile.on { background: var(--ink); color: var(--paper); }
+
+/* ---------- Buttons ---------- */
+
+.button {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 16px;
+  font: inherit; font-weight: 700;
+  color: var(--paper); background: var(--ink);
+  border: var(--line) solid var(--ink); border-radius: var(--radius);
+  text-decoration: none;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.button.ghost { color: var(--ink); background: var(--paper); }
+.button:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
+.button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+
+/* ---------- Hero ---------- */
+
+.hero { padding-block: 48px 40px; }
+.hero .wrap { display: grid; gap: 32px; align-items: center; }
+.hero-mark { width: min(220px, 52vw); height: auto; display: block; }
+.hero .eyebrow {
+  display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 3px 8px; border: var(--line) solid var(--ink); margin-bottom: 14px;
+}
+.hero h1 .accent { color: var(--accent); }
+.pitch { font-size: clamp(16px, 2.6vw, 19px); max-width: 40ch; }
+.hero .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 22px; align-items: center; }
+.cursor {
+  display: inline-block; width: 0.5ch; height: 0.95em; background: var(--accent);
+  vertical-align: -0.1em; margin-left: 4px; animation: blink 1.2s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+
+@media (min-width: 760px) {
+  .hero { padding-block: 72px 56px; }
+  .hero .wrap { grid-template-columns: auto 1fr; gap: 56px; }
+  .hero-mark { width: 260px; }
+}
+
+/* ---------- Sections ---------- */
+
+section { padding-block: 36px; }
+section > .wrap > .intro { max-width: var(--measure); margin-bottom: 26px; }
+section > .wrap > .intro p { color: var(--ink-2); }
+.kicker {
+  display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
+}
+.rule {
+  height: 10px; border: 0; margin: 0;
+  background: var(--hatch);
+  border-block: var(--line) solid var(--ink);
+}
+
+.grid { display: grid; gap: 26px 22px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .grid.two { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .grid.three { grid-template-columns: repeat(3, 1fr); } .grid.two.wide { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 640px) and (max-width: 959px) { .grid.three { grid-template-columns: 1fr 1fr; } }
+
+.feature .body p { color: var(--ink-2); font-size: 14px; }
+.feature .body ul { margin: 0; padding-left: 1.2em; font-size: 14px; color: var(--ink-2); }
+.feature .body li { margin-bottom: 4px; }
+.feature .art { border-bottom: var(--line) solid var(--ink); padding: 16px; display: grid; place-items: center; min-height: 150px; background: var(--paper); }
+.feature .art svg { width: 100%; max-width: 300px; height: auto; display: block; }
+
+/* Device illustration colors (inline SVGs use currentColor + these classes). */
+.ink-fill { fill: var(--ink); }
+.paper-fill { fill: var(--paper); }
+.accent-fill { fill: var(--accent); }
+.ink-stroke { stroke: var(--ink); fill: none; }
+
+/* Privacy block: inverted, like a "dense" on-state. */
+.private {
+  background: var(--ink); color: var(--paper);
+  border-block: var(--thick) solid var(--ink);
+}
+.private a { color: var(--paper); }
+.private .kicker { color: var(--paper); opacity: 0.85; }
+.private .intro p { color: var(--paper) !important; opacity: 0.85; }
+.private .card { background: var(--ink); border-color: var(--paper); color: var(--paper); }
+.private .card::before { background: repeating-conic-gradient(var(--paper) 0 25%, transparent 0 50%) 0 0 / 4px 4px; }
+.private .card > .label { background: var(--ink); border-color: var(--paper); }
+.private .row { border-color: var(--paper); }
+.private .row p { color: var(--paper); opacity: 0.8; }
+.private .tile { border-color: var(--paper); background: var(--ink); }
+
+/* App Store placeholder. */
+.store {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 18px;
+  padding: 18px; border: var(--line) dashed var(--ink); border-radius: var(--radius);
+  background: var(--hatch), var(--paper);
+}
+.store .badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 16px; min-width: 200px;
+  border: var(--line) solid var(--ink); border-radius: 8px;
+  background: var(--paper); color: var(--ink-2); font-weight: 700;
+}
+.store .badge span { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; }
+.store p { margin: 0; flex: 1 1 220px; }
+
+/* ---------- Long-form pages (privacy, terms, support) ---------- */
+
+.doc { padding-block: 40px 56px; }
+.doc .card > .body { padding: 20px clamp(16px, 4vw, 36px) 28px; }
+.doc article { max-width: var(--measure); }
+.doc h1 { font-size: clamp(28px, 6vw, 40px); }
+.doc h2 {
+  font-size: 18px; margin-top: 2em; padding-top: 1em;
+  border-top: 1px dashed var(--ink);
+}
+.doc h3 { margin-top: 1.4em; font-size: 15.5px; }
+.doc ul, .doc ol { padding-left: 1.3em; }
+.doc li { margin-bottom: 0.45em; }
+.meta { color: var(--ink-2); font-size: 13.5px; }
+.placeholder { background: var(--band); padding: 0 0.25em; border-radius: var(--radius); }
+.summary { margin: 18px 0 8px; }
+.summary .row p { font-size: 13.5px; }
+.doc .row h3 { margin-top: 0; font-size: 15px; }
+.toc { font-size: 14px; }
+.toc ol { margin: 0; }
+.caps { text-transform: uppercase; font-size: 13.5px; }
+
+/* FAQ */
+details {
+  border: var(--line) solid var(--ink); border-radius: var(--radius);
+  background: var(--paper); margin-bottom: 14px;
+}
+details + details { margin-top: 0; }
+summary {
+  cursor: pointer; list-style: none; padding: 12px 16px; font-weight: 700;
+  display: flex; justify-content: space-between; gap: 12px;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-weight: 800; }
+details[open] summary { border-bottom: 1px solid var(--ink); background: var(--band); }
+details[open] summary::after { content: "\2212"; }
+details > div { padding: 12px 16px 4px; }
+details > div ol, details > div ul { padding-left: 1.3em; }
+
+/* ---------- Footer ---------- */
+
+footer.site { border-top: var(--line) solid var(--ink); padding-block: 26px 40px; margin-top: 24px; background: var(--paper); }
+footer.site .wrap { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; }
+footer.site ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 0; padding: 0; }
+footer.site a { color: var(--ink); font-weight: 600; }
+footer.site small { color: var(--ink-2); font-size: 12.5px; }
+footer.site .brand { font-size: 15px; }
+footer.site .brand img { width: 26px; height: 26px; }

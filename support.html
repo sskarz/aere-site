@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support · Aere</title>
+  <meta name="description" content="Help with Aere: turning on the keyboard, Full Access, dictation, AutoFill and resetting.">
+  <meta name="theme-color" content="#FBFBF9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Aere</a>
+    <nav class="primary" aria-label="Primary">
+      <ul>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="support.html" aria-current="page">Support</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
+  <div class="wrap">
+    <article>
+      <h1>Support</h1>
+      <p>Answers to common questions. Can't find yours? <a href="#contact">Get in touch</a>.</p>
+    </article>
+
+    <h2 id="faq" style="border:0;margin-top:1.2em;padding-top:0">Frequently asked</h2>
+
+    <details id="enable" open>
+      <summary>How do I turn on the keyboard?</summary>
+      <div>
+        <ol>
+          <li>Open the Aere app and tap <strong>Open Settings</strong> (or go to <em>Settings &rsaquo; General &rsaquo; Keyboard &rsaquo; Keyboards &rsaquo; Add New Keyboard</em>).</li>
+          <li>Tap <strong>Keyboards</strong> and turn on <strong>Aere Keyboard</strong>.</li>
+          <li>Turn on <strong>Allow Full Access</strong> if you want dictation and your settings (see below).</li>
+          <li>In any app, touch and hold <kbd>&#x1F310;</kbd> (or the globe below the keyboard) and choose <strong>Aere Keyboard</strong>.</li>
+        </ol>
+        <p>The app's <em>Setup Guide</em> walks through these steps and ticks them off as the keyboard shows up.</p>
+      </div>
+    </details>
+
+    <details id="full-access">
+      <summary>What is Full Access, and why does Aere need it?</summary>
+      <div>
+        <p>iOS keeps keyboards from other developers in a sandbox. Full Access lifts some limits, and iOS warns that a keyboard with Full Access <em>could</em> send what you type over the network. Aere's keyboard has no network code and sends nothing anywhere. It uses Full Access only for:</p>
+        <ul>
+          <li><strong>the microphone</strong>, for dictation;</li>
+          <li><strong>the shared storage</strong> between the app and the keyboard, so your settings, learned words and My Info reach the keyboard;</li>
+          <li><strong>the clipboard chip</strong>, which reads the clipboard only when you tap it.</li>
+        </ul>
+        <p>Without it you can still type, swipe, autocorrect and use emoji. Details are in the <a href="privacy.html#full-access">privacy policy</a>.</p>
+      </div>
+    </details>
+
+    <details id="dictation">
+      <summary>Dictation isn't working</summary>
+      <div>
+        <ul>
+          <li><strong>Full Access</strong> must be on: <em>Settings &rsaquo; General &rsaquo; Keyboard &rsaquo; Keyboards &rsaquo; Aere Keyboard</em>.</li>
+          <li><strong>Microphone</strong> and <strong>Speech Recognition</strong> must be allowed. Open Aere &rsaquo; <em>Dictation</em> and tap <em>Allow</em>, or turn them on in <em>Settings &rsaquo; Aere</em>.</li>
+          <li>Your iPhone's language needs <strong>on-device</strong> speech recognition. On iOS 26, the <em>Dictation</em> page shows whether Apple's speech model is installed or still downloading; until it's ready, Aere uses the classic on-device recognizer.</li>
+          <li>The mic is hidden in password, code and card fields on purpose (privacy mode).</li>
+          <li>Another app using the microphone, such as a call or a recording, can block dictation. Finish it and try again.</li>
+          <li>Dictation stops after about 8 seconds of silence. If it was cut off, tap <em>Paste Dictation</em> in the suggestion bar to get your words back (it's kept for 10 minutes).</li>
+        </ul>
+        <p>Still stuck? Restart the app you're typing in, switch to another keyboard and back, or restart your iPhone.</p>
+      </div>
+    </details>
+
+    <details id="autofill">
+      <summary>Why does it switch to Apple's keyboard for passwords and codes?</summary>
+      <div>
+        <p>iOS only shows AutoFill (saved passwords, passkeys, Hide My Email and codes from Messages) on Apple's own keyboard. Keyboards from other developers can't show it.</p>
+        <p>So in sign-in and code fields Aere shows a <em>Passwords</em> or <em>AutoFill Code</em> chip. Tap it to switch to the next keyboard, fill in your details with AutoFill, then tap <kbd>&#x1F310;</kbd> to come back. In some secure fields iOS switches to its own keyboard automatically. You can hide the chip in Aere &rsaquo; <em>Layout</em>.</p>
+        <p>In password, code and card fields Aere also turns on privacy mode: no learning, predictions, swipe or dictation there.</p>
+      </div>
+    </details>
+
+    <details id="cleanup">
+      <summary>Dictation cleanup doesn't do anything</summary>
+      <div>
+        <p>Cleanup uses Apple Intelligence, which needs iOS 26 or later on a supported iPhone with Apple Intelligence turned on (and its model downloaded). Aere &rsaquo; <em>Dictation Cleanup</em> shows the current status. When it isn't available, your words are inserted as you said them.</p>
+      </div>
+    </details>
+
+    <details id="reset">
+      <summary>How do I reset Aere?</summary>
+      <div>
+        <ul>
+          <li><strong>Learned words:</strong> Aere &rsaquo; <em>Typing</em> &rsaquo; <em>Reset Keyboard Dictionary</em>.</li>
+          <li><strong>Setup:</strong> Aere &rsaquo; <em>Setup Guide</em> runs the setup steps again.</li>
+          <li><strong>Everything:</strong> delete the Aere app. That removes the keyboard and everything it stored on your iPhone. Reinstall from the App Store to start fresh.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details id="duo">
+      <summary>Do I need a foldable iPhone?</summary>
+      <div>
+        <p>No. Aere works on any iPhone with iOS 18 or later. On iPhone Duo it adapts when you fold and unfold, and can split the keyboard for your thumbs.</p>
+      </div>
+    </details>
+
+    <details id="data">
+      <summary>Does Aere collect anything?</summary>
+      <div>
+        <p>No. No accounts, no analytics, no servers. Everything stays on your iPhone. Read the <a href="privacy.html">privacy policy</a>.</p>
+      </div>
+    </details>
+
+    <div class="card" id="contact" style="margin-top:36px">
+      <span class="label band">Contact</span>
+      <div class="body">
+        <p>Email <a href="mailto:sanskar1016pro@outlook.com">sanskar1016pro@outlook.com</a>. Include your iPhone model, iOS version and Aere version (Aere &rsaquo; <em>About</em>). We'll reply as soon as we can.</p>
+        <p class="meta">If we ask for a diagnostic log, you can copy it from the app's Developer menu and paste it into your email. It contains technical events only. Nothing is sent unless you send it.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="26" height="26">Aere</a>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="support.html" aria-current="page">Support</a></li>
+      </ul>
+    </nav>
+    <small>&copy; 2026 Sanskar Thapa</small>
+  </div>
+</footer>
+</body>
+</html>

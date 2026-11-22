@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy · Aere</title>
+  <meta name="description" content="Aere's privacy policy. Aere works entirely on your iPhone: no servers, no accounts, no analytics.">
+  <meta name="theme-color" content="#FBFBF9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Aere</a>
+    <nav class="primary" aria-label="Primary">
+      <ul>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="privacy.html" aria-current="page">Privacy</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
+  <div class="wrap">
+    <div class="card">
+      <span class="label">Privacy policy</span>
+      <div class="body">
+        <article>
+          <h1>Privacy Policy</h1>
+          <p class="meta">Effective date: November 22, 2026<br>
+          Applies to the Aere app and the Aere Keyboard extension for iPhone (together, "Aere"), published by Sanskar Thapa ("we", "us").</p>
+
+          <div class="card summary">
+            <span class="label band">The short version</span>
+            <div class="row"><span class="tile" aria-hidden="true">&#x2300;</span><div><h3>Nothing leaves your iPhone</h3><p>Aere has no servers and the keyboard has no network code. We never receive what you type or say.</p></div></div>
+            <div class="row"><span class="tile" aria-hidden="true">&#x2205;</span><div><h3>No accounts, analytics or tracking</h3><p>No sign-up, no ads, no analytics or crash-reporting SDKs, no tracking across apps. We don't collect data, so we can't sell or share it.</p></div></div>
+            <div class="row"><span class="tile" aria-hidden="true">&#x25CF;</span><div><h3>Dictation and cleanup run on device</h3><p>Speech recognition and Apple Intelligence cleanup use Apple's on-device models.</p></div></div>
+            <div class="row"><span class="tile" aria-hidden="true">&#x25A3;</span><div><h3>You stay in control</h3><p>What Aere keeps (settings, learned words, My Info) stays in the app's storage on your iPhone. Reset it in the app, or delete the app to erase it.</p></div></div>
+          </div>
+
+          <h2 id="collect">1. What we collect</h2>
+          <p>Nothing. Aere does not send any information to us or to any third party. There are no user accounts, no analytics, no advertising identifiers, no crash reporters and no third-party SDKs. Because we never receive your data, we have nothing to sell, share, rent or use for advertising.</p>
+          <p>In App Store terms, Aere's privacy label is <strong>Data Not Collected</strong>.</p>
+
+          <h2 id="full-access">2. "Allow Full Access" and why Aere asks for it</h2>
+          <p>iOS keeps third-party keyboards in a tight sandbox. When you turn on <strong>Allow Full Access</strong>, iOS shows a general warning that a keyboard <em>could</em> transmit what you type. Aere doesn't: the keyboard contains no networking code. It needs Full Access only for these things:</p>
+          <ul>
+            <li><strong>The microphone, for dictation.</strong> A keyboard can't use the microphone without Full Access. Aere turns the microphone on only after you tap or hold the mic in the suggestion bar, and turns it off when you finish or cancel.</li>
+            <li><strong>The shared App Group container.</strong> This is private storage on your iPhone shared only between the Aere app and its keyboard. It's how settings you choose in the app reach the keyboard, how the keyboard remembers words it learned, how it reads the My Info details you entered, and how the app can tell that the keyboard is set up.</li>
+            <li><strong>The clipboard chip.</strong> Keyboards can only see the clipboard with Full Access. See <a href="#clipboard">section 6</a> for exactly how Aere uses it.</li>
+          </ul>
+          <p>Without Full Access, Aere still works as a keyboard (typing, autocorrect, swipe and emoji), but dictation, the clipboard chip, My Info and your app settings aren't available to it.</p>
+
+          <h2 id="dictation">3. Dictation</h2>
+          <ul>
+            <li>Speech is turned into text <strong>on your iPhone</strong> by Apple's speech frameworks: on iOS 26 and later, Apple's on-device speech model (SpeechAnalyzer); on earlier versions, Apple's speech recognizer in its on-device-only mode. Aere never sends audio to us, to Apple or to anyone else for recognition.</li>
+            <li>Audio is processed in memory while you dictate and is never saved to a file.</li>
+            <li>To capture the microphone inside a keyboard, Aere uses an invisible system web view that runs a small page built into the app. It doesn't load anything from the internet.</li>
+            <li>On iOS 26, iOS may download Apple's speech model for your language from Apple the first time it's needed, like other system language assets. That download is handled by iOS; no audio or text is part of it.</li>
+            <li>iOS asks your permission for the <strong>Microphone</strong> and <strong>Speech Recognition</strong>. You can change either at any time in Settings.</li>
+            <li>If a dictation is interrupted before you insert it (for example, you switch apps), Aere keeps that text on your iPhone for up to 10 minutes so it can offer it back as a <em>Paste Dictation</em> chip. It's deleted when you paste it, start a new dictation, or the 10 minutes pass.</li>
+          </ul>
+
+          <h2 id="cleanup">4. Apple Intelligence cleanup</h2>
+          <p>If you turn on dictation cleanup and your iPhone supports Apple Intelligence, Aere asks Apple's <strong>on-device</strong> language model to tidy the dictated text (remove filler words, fix punctuation, apply the style you chose, and follow your optional custom instruction) before inserting it. This runs on your iPhone. Aere does not use Private Cloud Compute or any server model. <em>Undo Cleanup</em> restores exactly what you said.</p>
+
+          <h2 id="stored">5. What's stored on your iPhone</h2>
+          <p>Aere keeps a small amount of information in its App Group container and its own app storage, <strong>only on your iPhone</strong>. It isn't uploaded anywhere by Aere. (If you back up your iPhone to iCloud or a computer, this storage can be part of that backup, under Apple's backup terms, like any app's data.)</p>
+          <ul>
+            <li><strong>Settings</strong> you choose in the app, such as layout, sounds, haptics, autocorrect and dictation options.</li>
+            <li><strong>Learned words.</strong> When you tell Aere to keep a word it was about to correct (by tapping the word in quotes, or the revert chip after an autocorrection), it remembers that word so it stops correcting it. Up to 500 single words are kept, without any surrounding text, and the word is also added to iOS's on-device spell-checking dictionary for Aere. Reset them anytime in <em>Typing &rsaquo; Reset Keyboard Dictionary</em>.</li>
+            <li><strong>My Info.</strong> Details you choose to enter about yourself in the app, such as your email address, phone number and address, so the keyboard can offer them as chips in matching fields. You can edit or remove them in the app at any time.</li>
+            <li><strong>Emoji recents and skin tones</strong>, so the emoji keyboard shows what you use.</li>
+            <li><strong>Setup status</strong>: when the keyboard last appeared and whether it had Full Access, so the app can show whether setup is complete.</li>
+            <li><strong>An interrupted dictation</strong>, for up to 10 minutes, as described above.</li>
+            <li><strong>Diagnostics</strong>, only if you use the Developer menu (see <a href="#diagnostics">section 9</a>).</li>
+          </ul>
+          <p>Aere does not keep a history of what you type.</p>
+
+          <h2 id="clipboard">6. Clipboard</h2>
+          <p>To offer a paste chip, the keyboard asks iOS only <em>what kind</em> of content is on the clipboard (for example, whether it looks like a number or a link). iOS answers that question without giving Aere the contents. Aere <strong>reads</strong> the clipboard only when you tap the chip to paste, and it inserts the text into the field you're typing in. Clipboard contents are never stored or sent anywhere.</p>
+
+          <h2 id="privacy-mode">7. Privacy mode in password, code and card fields</h2>
+          <p>When a field tells iOS it's for a password, a new password, a one-time code or a payment card number (or it hides what you type), Aere switches to privacy mode for that field:</p>
+          <ul>
+            <li>no learning: nothing you type there is added to learned words;</li>
+            <li>no predictions, autocorrection or swipe typing;</li>
+            <li>no dictation (the mic is hidden);</li>
+            <li>no logging: the optional diagnostic trace is paused.</li>
+          </ul>
+          <p>Keyboards from other developers can't show iOS AutoFill. In sign-in and code fields Aere offers a <em>Passwords</em> (or <em>AutoFill Code</em>) chip that switches to the next keyboard, usually Apple's, so iOS can fill in your saved passwords. Aere never sees your saved passwords.</p>
+
+          <h2 id="contacts">8. Contact names and text replacements</h2>
+          <p>iOS gives every keyboard a list of words to help with suggestions, called the supplementary lexicon. It includes the names of people in your Contacts and your Text Replacements. Aere uses it only in memory to suggest and correct those words. It doesn't request access to your Contacts and doesn't copy or store the list.</p>
+
+          <h2 id="diagnostics">9. Optional diagnostics (Developer menu)</h2>
+          <p>The app has a hidden Developer menu for troubleshooting. Its tools stay on your iPhone and are never sent anywhere by Aere:</p>
+          <ul>
+            <li>A <strong>diagnostic log</strong> of the last 50 technical events (for example "dictation started" or "keyboard appeared", with counts rather than content). It doesn't contain what you type or say.</li>
+            <li>An optional <strong>touch trace</strong>, off by default. While you have it on, it records key touches and the text the keyboard inserts, so it can contain what you type. It's paused in privacy-mode fields. Turn it off and tap <em>Clear Trace</em> when you're done.</li>
+          </ul>
+          <p>This data leaves your iPhone only if you choose to copy or share it yourself, for example to send it to us when asking for help. If you do, we use it only to answer you and fix the problem, and delete it when we're done.</p>
+
+          <h2 id="contact-us">10. If you contact us</h2>
+          <p>If you email us, we receive your email address and whatever you write. We use it only to reply, and we don't add you to any list.</p>
+
+          <h2 id="children">11. Children's privacy</h2>
+          <p>Aere doesn't collect personal information from anyone, including children under 13 (or the equivalent age in your country). Because nothing is collected, there's nothing for us to review or delete. If you believe a child has sent us personal information by email, contact us and we'll delete it.</p>
+
+          <h2 id="rights">12. Your choices and rights</h2>
+          <p>All of Aere's data is on your device and under your control: change permissions in Settings, reset learned words and edit My Info in the app, turn off Full Access in <em>Settings &rsaquo; General &rsaquo; Keyboard &rsaquo; Keyboards &rsaquo; Aere Keyboard</em>, or delete the app to erase everything it stored. Since we hold no personal data about you, requests to access or delete data held by us (for example under GDPR or CCPA) have nothing to return, but you're welcome to ask.</p>
+
+          <h2 id="changes">13. Changes to this policy</h2>
+          <p>If Aere's handling of data changes, we'll update this page and its effective date before the change ships, and describe significant changes in the app's release notes. We won't start collecting data without saying so here first.</p>
+
+          <h2 id="contact">14. Contact</h2>
+          <p>Sanskar Thapa<br>
+          Email: <a href="mailto:sanskar1016pro@outlook.com">sanskar1016pro@outlook.com</a></p>
+        </article>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="26" height="26">Aere</a>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="privacy.html" aria-current="page">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </nav>
+    <small>&copy; 2026 Sanskar Thapa</small>
+  </div>
+</footer>
+</body>
+</html>
