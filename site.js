@@ -278,38 +278,42 @@
 
     duo: function (s) {
       var dev = el('g', { 'class': 'device' }, s);
-      var left = el('g', {}, dev);
-      var leftShape = 'M180 20H46A16 16 0 0 0 30 36V214A16 16 0 0 0 46 230H180Z';
-      shape(s, 'M185 25H51A16 16 0 0 0 35 41V219A16 16 0 0 0 51 235H185Z', 'fill-chk', 0, left);
-      shape(s, leftShape, 'fill-card', 0, left);
-      ink(s, rough([[180, 20], [46, 20], [34, 24], [30, 36], [30, 214], [34, 226], [46, 230], [180, 230]], 31, 0.8), { d: 0, t: 0.8, w: 2.4, parent: left });
-      ink(s, pen.word(46, 160, 52, 9, 2), { d: 0.6, t: 0.5, w: 1.7, parent: left });
-      ink(s, pen.word(46, 120, 72, 9, 5), { d: 0.9, t: 0.4, w: 1.7, parent: left });
-      var kbL = el('g', { 'class': 'split-kb' }, left);
       var r, c;
+
+      /* The right half stays put. */
+      var right = el('g', {}, dev);
+      shape(s, 'M175 25H319A16 16 0 0 1 335 41V219A16 16 0 0 1 319 235H175Z', 'fill-chk', 0, right);
+      shape(s, 'M180 20H314A16 16 0 0 1 330 36V214A16 16 0 0 1 314 230H180Z', 'fill-card', 0, right);
+      ink(s, rough([[180, 20], [314, 20], [326, 24], [330, 36], [330, 214], [326, 226], [314, 230], [180, 230]], 37, 0.8), { d: 0.1, t: 0.8, w: 2.4, parent: right });
+      ink(s, pen.word(194, 290, 52, 9, 9), { d: 0.75, t: 0.45, w: 1.7, parent: right });
+      shape(s, pen.rect(296, 40, 3.5, 15, 1), 'fill-red', 1.2, right);
+      for (r = 0; r < 3; r++) for (c = 0; c < 5; c++) ink(s, pen.box(196 + c * 25 - r * 4, 150 + r * 24, 20, 17, 4, 80 + r * 5 + c, 0.35), { c: 'thin', d: 0.6 + (r * 5 + c) * 0.025, t: 0.25, parent: right });
+
+      /* The left half is the cover: it swings over the right half on the hinge, like a book closing. */
+      var left = el('g', { 'class': 'half-l' }, dev);
+      var front = el('g', { 'class': 'front' }, left);
+      var leftShape = 'M180 20H46A16 16 0 0 0 30 36V214A16 16 0 0 0 46 230H180Z';
+      shape(s, 'M180 25H51A16 16 0 0 0 35 41V219A16 16 0 0 0 51 235H180Z', 'fill-chk', 0, front);
+      shape(s, leftShape, 'fill-card', 0, front);
+      ink(s, rough([[180, 20], [46, 20], [34, 24], [30, 36], [30, 214], [34, 226], [46, 230], [180, 230]], 31, 0.8), { d: 0, t: 0.8, w: 2.4, parent: front });
+      ink(s, pen.word(46, 160, 52, 9, 2), { d: 0.6, t: 0.5, w: 1.7, parent: front });
+      ink(s, pen.word(46, 120, 72, 9, 5), { d: 0.9, t: 0.4, w: 1.7, parent: front });
+      var kbL = el('g', { 'class': 'split-kb' }, front);
       for (r = 0; r < 3; r++) for (c = 0; c < 5; c++) ink(s, pen.box(44 + c * 25 + r * 4, 150 + r * 24, 20, 17, 4, 60 + r * 5 + c, 0.35), { c: 'thin', d: 0.5 + (r * 5 + c) * 0.025, t: 0.25, parent: kbL });
 
-      var right = el('g', { 'class': 'half-r' }, dev);
-      var front = el('g', { 'class': 'front' }, right);
-      shape(s, 'M175 25H319A16 16 0 0 1 335 41V219A16 16 0 0 1 319 235H175Z', 'fill-chk', 0, front);
-      shape(s, 'M180 20H314A16 16 0 0 1 330 36V214A16 16 0 0 1 314 230H180Z', 'fill-card', 0, front);
-      ink(s, rough([[180, 20], [314, 20], [326, 24], [330, 36], [330, 214], [326, 226], [314, 230], [180, 230]], 37, 0.8), { d: 0.1, t: 0.8, w: 2.4, parent: front });
-      ink(s, pen.word(194, 290, 52, 9, 9), { d: 0.75, t: 0.45, w: 1.7, parent: front });
-      shape(s, pen.rect(296, 40, 3.5, 15, 1), 'fill-red', 1.2, front);
-      for (r = 0; r < 3; r++) for (c = 0; c < 5; c++) ink(s, pen.box(196 + c * 25 - r * 4, 150 + r * 24, 20, 17, 4, 80 + r * 5 + c, 0.35), { c: 'thin', d: 0.6 + (r * 5 + c) * 0.025, t: 0.25, parent: front });
-
-      /* The outer screen: drawn mirrored so it reads right once the half flips over the hinge. */
-      var back = el('g', { 'class': 'back' }, right);
-      el('path', { d: 'M185 25H319A16 16 0 0 1 335 41V219A16 16 0 0 1 319 235H185Z', 'class': 'fill-chk', transform: 'translate(-10 0)' }, back);
-      el('path', { d: 'M180 20H314A16 16 0 0 1 330 36V214A16 16 0 0 1 314 230H180Z', 'class': 'fill-card' }, back);
-      el('path', { d: rough([[180, 20], [314, 20], [326, 24], [330, 36], [330, 214], [326, 226], [314, 230], [180, 230]], 41, 0.8), 'class': 'ink', style: 'stroke-width:2.4' }, back);
-      el('path', { d: pen.word(214, 312, 52, 9, 12), 'class': 'ink', style: 'stroke-width:1.7' }, back);
-      el('path', { d: pen.word(250, 312, 72, 9, 14), 'class': 'ink', style: 'stroke-width:1.7' }, back);
-      el('path', { d: pen.rect(240, 62, 3.5, 15, 1), 'class': 'fill-red' }, back);
+      /* The outer (cover) screen on the back of the left half: drawn mirrored so it reads right once the half flips over the hinge. */
+      var back = el('g', { 'class': 'back' }, left);
+      el('path', { d: 'M180 25H51A16 16 0 0 0 35 41V219A16 16 0 0 0 51 235H180Z', 'class': 'fill-chk', transform: 'translate(-10 0)' }, back);
+      el('path', { d: leftShape, 'class': 'fill-card' }, back);
+      el('path', { d: rough([[180, 20], [46, 20], [34, 24], [30, 36], [30, 214], [34, 226], [46, 230], [180, 230]], 41, 0.8), 'class': 'ink', style: 'stroke-width:2.4' }, back);
+      var cover = el('g', { transform: 'translate(-150 0)' }, back);
+      el('path', { d: pen.word(214, 312, 52, 9, 12), 'class': 'ink', style: 'stroke-width:1.7' }, cover);
+      el('path', { d: pen.word(250, 312, 72, 9, 14), 'class': 'ink', style: 'stroke-width:1.7' }, cover);
+      el('path', { d: pen.rect(240, 62, 3.5, 15, 1), 'class': 'fill-red' }, cover);
       for (r = 0; r < 3; r++) for (c = 0; c < 10; c++) {
         var w = 11, x = 322 - (c + 1) * w - c * 2.4 - r * 6;
         if (r === 2 && (c < 1 || c > 8)) continue;
-        el('path', { d: pen.box(x, 156 + r * 22, w, 16, 3, 100 + r * 10 + c, 0.25), 'class': 'ink thin' }, back);
+        el('path', { d: pen.box(x, 156 + r * 22, w, 16, 3, 100 + r * 10 + c, 0.25), 'class': 'ink thin' }, cover);
       }
       ink(s, pen.line(180, 26, 180, 224, 3, 0.4), { c: 'faint', d: 0.9, t: 0.5, w: 1.6, parent: dev });
     },

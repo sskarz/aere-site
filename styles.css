@@ -328,11 +328,11 @@ section.demo, section.private, section.duo, section.extras, section.get { paddin
 [data-duo].folded .duo-label .open { opacity: 0; }
 [data-duo].folded .duo-label .closed { opacity: 1; }
 .duo .device { transition: transform .9s var(--move); }
-.duo .half-r { transform-origin: 180px 0; transition: transform .9s var(--move); }
+.duo .half-l { transform-origin: 180px 0; transition: transform .9s var(--move); }
 .duo .back { opacity: 0; transition: opacity 0s linear .45s; }
 .duo .front { opacity: 1; transition: opacity 0s linear .45s; }
-[data-duo].folded .device { transform: translateX(75px); }
-[data-duo].folded .half-r { transform: scaleX(-1); }
+[data-duo].folded .device { transform: translateX(-75px); }
+[data-duo].folded .half-l { transform: scaleX(-1); }
 [data-duo].folded .back { opacity: 1; }
 [data-duo].folded .front { opacity: 0; }
 [data-duo].folded .split-kb { opacity: 0; transition: opacity 0s linear .45s; }
